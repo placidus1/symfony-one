@@ -71,4 +71,14 @@ class PostController extends AbstractController
 		$this->addFlash('success', 'Post was removed');
 		return $this->redirect($this->generateUrl('post.home'));
 	}
+
+	/**
+	 * @Route("/test", name="test")
+	 * @return Reponse
+	 */
+	public function test()
+	{
+		return $this->render('post/test.html.twig');
+	}
+
 }
