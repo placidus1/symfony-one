@@ -9,6 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Stopwatch\Stopwatch;
+use Symfony\Contracts\Cache\CacheInterface;
+use Symfony\Contracts\Cache\ItemInterface;
 
 /**
  * @Route("/post", name="post.")
@@ -74,11 +77,28 @@ class PostController extends AbstractController
 
 	/**
 	 * @Route("/test", name="test")
+	 * @param CacheInterface $cache
 	 * @return Reponse
 	 */
-	public function test()
+	public function test(Stopwatch $stopwatch,CacheInterface $cache)
 	{
-		return $this->render('post/test.html.twig');
+//		$stopwatch->start('calcul-long');
+//		dump($stopwatch);
+//		$td = $cache->get('resultat-calcul-ong', function (ItemInterface $item){
+//			$item->expiresAfter(10);
+//			return $this->dateToday();
+//		});
+//		$stopwatch->stop('calcul-long');
+
+
+		return $this->render('post/test.html.twig', [
+
+		]);
+	}
+
+	function dateToday(): int{
+		sleep(2);
+		return 10;
 	}
 
 }
